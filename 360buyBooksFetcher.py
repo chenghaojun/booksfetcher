@@ -98,11 +98,14 @@ class BooksFetcher:
 
     def getSkuidkey(self):
         key = None
-        g = self.regexps['priceUrl'].search(self.content)
-        if g:
-            key = g.group()
-            self.priceUrl = key
-            key = key[32:][:-5]
+        try:
+            g = self.regexps['priceUrl'].search(self.content)
+            if g:
+                key = g.group()
+                self.priceUrl = key
+                key = key[32:][:-5]
+        except:
+            pass
         return key;
 
     def getKeywords(self):
